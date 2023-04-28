@@ -11,5 +11,9 @@
         <module name="spring-boot-project.spring-boot-project.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring-boot-project.spring-boot-project.main~1" target="17" />
+      <module name="spring-boot-project.spring-boot-project.test~1" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
