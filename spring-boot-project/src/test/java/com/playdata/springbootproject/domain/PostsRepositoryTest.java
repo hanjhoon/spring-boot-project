@@ -1,5 +1,6 @@
 package com.playdata.springbootproject.domain;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PostsRepositoryTest {
     @Autowired
     PostsRepository postsRepository;
-    @Autowired
+    @AfterEach // JUnit4 @After
     public void cleanup() {
         postsRepository.deleteAll();
     }
