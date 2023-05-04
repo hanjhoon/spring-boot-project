@@ -19,6 +19,7 @@ public class PostsService {
     private final PostsRepository postsRepository;
 
     public Long save(PostsSaveRequestDto requestDto) {
+
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 

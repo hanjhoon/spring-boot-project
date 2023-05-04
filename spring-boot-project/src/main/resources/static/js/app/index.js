@@ -13,6 +13,7 @@ const main = {
     },
     // 데이터 저장
     save() {
+
         const data = {
             title: document.querySelector('#title').value,
             author: document.querySelector('#author').value,
@@ -23,7 +24,7 @@ const main = {
         fetch('/api/v1/posts', {
             method: "POST",
             headers: {
-                "Content-Type":"application/json;char=utf-8",
+                "Content-Type":"application/json;charset=utf-8",
             },
             body: JSON.stringify(data),
         })
@@ -34,13 +35,13 @@ const main = {
                 window.location.href="/";
             } else {
                 // 저장 실패
-                alert("오류가 발생했습니다.");
+                alert("오류가 1.");
             }
         })
         .catch((error) => {
             // 네트워크 오류 등 예외 발생
             alert(error.message)
-        })
+        });
     },
 
     update() {
@@ -64,7 +65,7 @@ const main = {
                  window.location.href="/";
              } else {
                  // 수정 실패
-                 alert("오류가 발생했습니다.");
+                 alert("오류가 2.");
              }
        })
        .catch((error) => {
@@ -85,7 +86,7 @@ const main = {
             window.location.href="/";
             } else {
             // 삭제 실패
-            alert("오류가 발생했습니다.");
+            alert("오류가 3.");
             }
             })
             .catch((error) => {
