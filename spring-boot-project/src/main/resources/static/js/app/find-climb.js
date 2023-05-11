@@ -15,10 +15,11 @@ const main = {
 
         const btnDelete =document.querySelector('#btn-delete');
         if(btnDelete) btnDelete.addEventListener('click',()=>this.delete());
-    },
 
+    },
     // 데이터 저장
     save() {
+
         const data = {
             title: document.querySelector('#title').value,
             author: document.querySelector('#author').value,
@@ -26,6 +27,7 @@ const main = {
             climbing_mountain: document.querySelector('#climbing_mountain').value,
             climbing_date: document.querySelector('#climbing_date').value,
         };
+
         // fetch API를 이용해서 POST 요청을 보내고 그 결과를 처리
         fetch('/api/v1/posts', {
             method: "POST",
@@ -102,8 +104,6 @@ const main = {
             alert(error.message)
        })
     },
-
-
 }
 
 main.init();

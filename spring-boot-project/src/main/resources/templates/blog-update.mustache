@@ -1,0 +1,37 @@
+{{>layout/header}}
+<div class="container">c
+    <h1>블로그 수정</h1>
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <form>
+                <div class="form-group">
+                    <label for="id">글 번호</label>
+                    <input type="text" class="form-control" id="id" value="{{blog.id}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="title">제목</label>
+                    <input type="text" class="form-control" id="title" value="{{blog.title}}">
+                </div>
+                <div class="form-group">
+                    <label for="author">닉네임</label>
+                    <input type="text" class="form-control" id="hikerid" value="{{blog.hikerid}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="author">산이름</label>
+                    <input type="text" class="form-control" id="pmntnsn" value="{{blog.pmntnsn}}">
+                </div>
+                <div class="form-group">
+                    <label for="content">내용</label>
+                    <textarea id="content"  class="form-control" placeholder="내용을 입력하세요.">{{blog.content}}</textarea>
+                </div>
+                <div class="form-group">
+                    <a href="/" role="button" class="btn btn-secondary">취소</a>
+                    <button id="btn-update" class="btn btn-primary" type="button">수정 완료</button>
+                    <button id="btn-delete" class="btn btn-danger" type="button">삭제</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{>layout/footer}}

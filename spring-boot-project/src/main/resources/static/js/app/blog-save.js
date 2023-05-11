@@ -6,7 +6,7 @@ const main = {
 
             },
     // 초기화
-    init() {
+    init2() {
         const btnSave =document.querySelector('#btn-save');
         if(btnSave) btnSave.addEventListener('click',()=>this.save());
 
@@ -21,13 +21,12 @@ const main = {
     save() {
         const data = {
             title: document.querySelector('#title').value,
-            author: document.querySelector('#author').value,
             content: document.querySelector('#content').value,
-            climbing_mountain: document.querySelector('#climbing_mountain').value,
-            climbing_date: document.querySelector('#climbing_date').value,
+            pmntnsn: document.querySelector('#pmntnsn').value,
+            hikerid: document.querySelector('#hikerid').value,
         };
         // fetch API를 이용해서 POST 요청을 보내고 그 결과를 처리
-        fetch('/api/v1/posts', {
+        fetch('/api/v1/blogs', {
             method: "POST",
             headers: {
                 "Content-Type":"application/json;charset=utf-8",
@@ -54,13 +53,14 @@ const main = {
         const data = {
             title: document.querySelector("#title").value,
             content: document.querySelector("#content").value,
-            climbing_mountain: document.querySelector('#climbing_mountain').value,
-            climbing_date: document.querySelector('#climbing_date').value,
+            hikerid: document.querySelector("#hikerid").value,
+            pmntnsn: document.querySelector("#pmntnsn").value,
+
         };
 
        const id = document.querySelector("#id").value;
 
-       fetch(`/api/v1/posts/${id}`, {
+       fetch(`/api/v1/blogs/${id}`, {
             method: "PUT",
             headers: {
                        "Content-Type":"application/json;char=utf-8",
@@ -84,7 +84,7 @@ const main = {
     //데이터 삭제
     delete() {
         const id = document.querySelector("#id").value;
-        fetch(`/api/v1/posts/${id}`, {
+        fetch(`/api/v1/blogs/${id}`, {
                     method: "DELETE",
 
         }).then((response) => {
@@ -102,8 +102,6 @@ const main = {
             alert(error.message)
        })
     },
-
-
 }
 
 main.init();

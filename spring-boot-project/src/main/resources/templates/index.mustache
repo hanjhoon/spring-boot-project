@@ -1,41 +1,29 @@
-{{>layout/header}}
-<h1>스프링 부트 게시판</h1>
+{{>layout/header2}}
+
 <div class="container">
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-6">
-                <a href="/posts/save" class="btn btn-primary">글 등록</a>
-                {{#userName}}
-                    Logged in as : <span id="user">{{userName}}</span>
-                    <a href="/logout" class="btm btm-info active" role="button">Logout</a>
-                {{/userName}}
-                {{^userName}}
-                    <a href="/oauth2/authorization/google" class = "btn btn-success active" role="button">Login</a>
-                {{/userName}}
+                <a href="/posts/save" class="btn btn-primary">등산 구인글 등록</a>
             </div>
         </div>
         <br>
-        <!-- 게시글 리스트 -->
-        <table class="table table-horizontal table-bordered">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">글 번호</th>
-                <th scope="col">제목</th>
-                <th scope="col">작성자</th>
-                <th scope="col">작성일</th>
-            </tr>
-            </thead>
-            <tbody id="tbody">
-            {{#posts}}
-                <tr>
-                    <td>{{id}}</td>
-                    <td><a href="/posts/{{id}}">{{title}}</a></td>
-                    <td>{{author}}</td>
-                    <td>{{createdDate}}</td>
-                </tr>
-            {{/posts}}
-            </tbody>
-        </table>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/blogs/save" class="btn btn-primary">블로그 등록</a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/finds" class="btn btn-primary">등산 친구 찾기</a>
+            </div>
+        </div>
+        <br>
+        <br>
     </div>
 </div>
+
 {{>layout/footer}}

@@ -1,6 +1,7 @@
 package com.playdata.springbootproject.web;
 
 import com.playdata.springbootproject.service.PostsService;
+import com.playdata.springbootproject.web.dto.PostsResponseDto;
 import com.playdata.springbootproject.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
