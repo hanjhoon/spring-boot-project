@@ -8,7 +8,6 @@ public class BlogsResponseDto {
     private Long id;
     private String title;
     private String content;
-    private String author;
     private String hikerid;
     private String pmntnsn;
     public BlogsResponseDto(Blogs entity) {

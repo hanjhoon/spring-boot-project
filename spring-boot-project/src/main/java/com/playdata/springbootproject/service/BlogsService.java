@@ -1,6 +1,7 @@
 package com.playdata.springbootproject.service;
 import com.playdata.springbootproject.domain.blogs.Blogs;
 import com.playdata.springbootproject.domain.blogs.BlogsRepository;
+import com.playdata.springbootproject.domain.posts.Posts;
 import com.playdata.springbootproject.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,15 @@ public class BlogsService {
                 .map(BlogsListRequestDto::new)
                 .collect(Collectors.toList());
     }
+
+    public List<BlogsResponseDto> findByHikerid(String hikerid) {
+        List<Blogs> blogs = blogsRepository.findByHikerid(hikerid);
+
+        return blogs.stream()
+                .map(BlogsResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
     @Transactional
     public Long delete(Long id) {
         Blogs blogs = blogsRepository.findById(id)

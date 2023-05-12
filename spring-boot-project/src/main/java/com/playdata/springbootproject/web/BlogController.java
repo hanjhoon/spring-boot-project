@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-public class BLogController {
+public class BlogController {
     private final BlogsService blogsService;
+    @GetMapping("/api/v1/blogs/{id}")
+    public BlogsResponseDto findById(@PathVariable Long id) {
+        return blogsService.findById(id);
+    }
 
     @PostMapping("/api/v1/blogs")
     public Long save(@RequestBody BlogsSaveRequestDto requestDto) {
@@ -21,20 +25,11 @@ public class BLogController {
     public Long update(@PathVariable Long id, @RequestBody BlogsSaveRequestDto requestDto) {
         return blogsService.update(id,requestDto);
     }
-
-    @GetMapping("/api/v1/blogs/{id}")
-    public BlogsResponseDto findById(@PathVariable Long id) {
-        return blogsService.findById(id);
-    }
-
     @DeleteMapping("/api/v1/blogs/{id}")
     public Long delete(@PathVariable Long id) {
         blogsService.delete(id);
         return id;
     }
-
-
-
     @GetMapping("/blogs/{id}")
     public String blogUpdate(Model model, @PathVariable Long id) {
         model.addAttribute("blog", blogsService.findById(id));

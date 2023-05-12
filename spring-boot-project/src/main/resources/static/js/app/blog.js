@@ -6,7 +6,7 @@ const main = {
 
             },
     // 초기화
-    init2() {
+    init() {
         const btnSave =document.querySelector('#btn-save');
         if(btnSave) btnSave.addEventListener('click',()=>this.save());
 
@@ -37,7 +37,7 @@ const main = {
             if(response.status===200||response.status===201) {
                 // 저장 성공
                 alert("글이 등록되었습니다.");
-                window.location.href="/";
+                window.location.href="/blog";
             } else {
                 // 저장 실패
                 alert("오류가 1.");
@@ -70,7 +70,7 @@ const main = {
              if(response.status===200||response.status===201) {
                  // 수정 성공
                  alert("글이 수정되었습니다.");
-                 window.location.href="/";
+                 window.location.href="/blog";
              } else {
                  // 수정 실패
                  alert("오류가 2.");
@@ -91,7 +91,7 @@ const main = {
             if(response.status===200||response.status===201) {
             // 삭제 성공
             alert("글이 삭제되었습니다.");
-            window.location.href="/";
+            window.location.href="/blog";
             } else {
             // 삭제 실패
             alert("오류가 3.");

@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="ko">
 <head>
-    <link rel="stylesheet" href="/css/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +8,15 @@
     <script src="https://kit.fontawesome.com/fb139b7f2d.js" crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css">
+
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:400,300,500,700,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
+
     <!-- Theme Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/responsive.css" type="text/css">
 </head>
 <body>
     <header>
@@ -53,42 +54,27 @@
                                 </li>
                                 <li>
                                     <!-- 회원가입 -->
-                                    <a href=""><i class="fa fa-lock"></i> Register</a></li>
+                                    <i class="fa fa-lock" style="color: white;"></i>
+                                    <a href="/register" role="button"> Register</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="navigation" style="background-color: blue;">
             <nav class="navbar navbar-theme">
                 <div class="container">
-                    <div style="display: flex; flex-direction: row;">
-                        <!-- 등산로 검색 -->
-                        <form class="form-inline" method="get" action="http://192.168.0.193:8000/">
-                            <div class="form-group">
-                                <label for="search"></label>
-                                <div class="input-group">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">등산로 검색</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- 뉴스 -->
-                        <a href="/news" class="btn btn-primary">축제 뉴스</a>
-                    </div>
                     <!-- 메뉴바-->
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav navbar-right">
-                           <li><a href="#">Blog</a></li>
+                           <li><a href="/blog">Blog</a></li>
 
-                            <li><a href="#">Media</a></li>
+                            <li><a href="/news">News</a></li>
 
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="http://192.168.0.193:8000/">Tracking Road</a></li>
 
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="/finds">Find Duo</a></li>
 
                         </ul>
                     </div><!-- /.navbar-collapse -->

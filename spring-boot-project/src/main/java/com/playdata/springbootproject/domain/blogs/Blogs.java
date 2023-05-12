@@ -9,18 +9,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Blogs extends AuditingEntity {
-    @Id // PK
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
     private Long id; // BIGINT
     @Column(length = 500, nullable = false)
     private String title;
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
+    @Column
     private String hikerid;
     private String pmntnsn;
 
     @Builder
-    public Blogs(String title, String content, String author, String hikerid, String pmntnsn) {
+    public Blogs(String title, String content, String hikerid, String pmntnsn) {
         this.title = title;
         this.content = content;
         this.hikerid = hikerid;

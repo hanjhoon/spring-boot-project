@@ -27,19 +27,17 @@ public class IndexController {
         if(user!=null) {
             model.addAttribute("userName", user.getName());
         }
-
-        return "index";// src/main/resources/templetes/ + "index" + .mustach
+        return "index";// src/main/resources/templetes/ + "index" + .mustache
     }
 
-    @GetMapping("/posts/save")
-    public String savePost(){
-
-        return "posts-save";
-    }
 
     @GetMapping("/posts/{id}")
-    public String postsUpdate(Model model, @PathVariable Long id) {
+    public String postsUpdate(Model model, HttpSession httpSession,@PathVariable Long id) {
         model.addAttribute("post", postsService.findById(id));
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user!=null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "posts-update";
     }
     @GetMapping("/blogs/save")
@@ -48,7 +46,11 @@ public class IndexController {
     }
 
     @GetMapping("/news")
-    public String news(){
+    public String news(Model model, HttpSession httpSession){
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user!=null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "news";
     }
 
@@ -61,6 +63,24 @@ public class IndexController {
             model.addAttribute("userName", user.getName());
         }
         return "find-climb";
+    }
+    @GetMapping("/blog")
+    public String blog(){
+        return "blog";
+    }
+//    @GetMapping("/blog")
+//    public String blog(Model model, HttpSession httpSession, @RequestParam(value="searchQuery", defaultValue = "") String hikerid){
+//        //Model: 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있다.
+//        model.addAttribute("blogs", blogsService.findByHikerid(hikerid));
+//        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+//        if(user!=null) {
+//            model.addAttribute("userName", user.getName());
+//        }
+//        return "blog";
+//    }
+    @GetMapping("/register")
+    public String register(Model model, HttpSession httpSession) {
+        return "register";
     }
 
 }

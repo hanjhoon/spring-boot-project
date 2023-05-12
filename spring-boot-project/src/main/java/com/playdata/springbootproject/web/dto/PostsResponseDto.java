@@ -2,7 +2,6 @@ package com.playdata.springbootproject.web.dto;
 
 import com.playdata.springbootproject.domain.posts.Posts;
 import lombok.Getter;
-
 import java.time.LocalDateTime;
 import java.util.Date;
 

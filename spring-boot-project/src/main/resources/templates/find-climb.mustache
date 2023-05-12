@@ -1,6 +1,10 @@
 {{>layout/header}}
 <div class="container">
     <div class="col-md-12">
+        <form action="/posts/save" method="get">
+            <button href="/posts/save">글 등록</button>
+        </form>
+
         <form method="get">
             <input type="text" name="searchQuery" id="search-box">
             <button type="submit">산 검색</button>
@@ -38,4 +42,5 @@
         </table>
     </div>
 </div>
+<script src="/js/app/index.js"></script>
 {{>layout/footer}}
