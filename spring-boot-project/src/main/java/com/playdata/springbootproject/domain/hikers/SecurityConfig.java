@@ -1,4 +1,4 @@
-package com.playdata.springbootproject.config.auth;
+package com.playdata.springbootproject.domain.hikers;
 
 import com.playdata.springbootproject.domain.user.Role;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity  // Spring Security 설정을 활성화
 @Configuration      // Spring 설정 클래스
 public class SecurityConfig {
-    private final CustomOauth2UserService customOauth2UserService;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
@@ -32,17 +31,15 @@ public class SecurityConfig {
                     // 나머지 URL에 대해서 설정
                     .anyRequest().authenticated()
                 .and()
+                  .formLogin().loginPage("/log-in")
+                  .loginProcessingUrl("/loginProc")
+                  .defaultSuccessUrl("/")
+                .and()
                     // 로그아웃 기능에 대한 설정
                     .logout()
                         // 로그아웃 이후에 이동되는 URL
-                        .logoutSuccessUrl("/")
-                .and()
-                    // Oauth2 로그인 기능에 대한 설정
-                    .oauth2Login()
-                        // Oauth2 로그인이 성공된 이후 사용자 정보를 가져올 때의 설정
-                       .userInfoEndpoint()
-                            // 소셜 로그인 성공 시 후속 처리에 대한 인터페이스 구현첼츨 등록
-                            .userService(customOauth2UserService);
+                        .logoutSuccessUrl("/");
+
         return http.build();
     }
 }

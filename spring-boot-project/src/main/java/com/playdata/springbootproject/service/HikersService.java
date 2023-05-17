@@ -19,11 +19,7 @@ public class HikersService {
 
         return hikersRepository.save(requestDto.toEntity()).getId();
     }
-    public HikersResponseDto findById(Long id) {
-        Hikers hikers =hikersRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("해당 회원정보를 찾을 수 없습니다."));
-        return new HikersResponseDto(hikers);
-    }
+
     @Transactional // 두 개의 작업이 동시에 일어나야 한다
     public Long update(Long id, HikersSaveRequestDto requestDto) {
         Hikers hikers = hikersRepository.findById(id)
@@ -44,8 +40,21 @@ public class HikersService {
         hikersRepository.delete(hikers);
         return id;
     }
-    public HikersResponseDto findByUserid(String userid) {
-        Hikers hikers = hikersRepository.findByUserid(userid);
+    public HikersResponseDto findById(Long id) {
+        Hikers hikers =hikersRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("해당 게시글을 찾을 수 없습니다. id=" +id));
         return new HikersResponseDto(hikers);
     }
+    public Object findByUserid(String userid) {
+        return userid;
+    }
+
+//    public Hikers findBySsnAndPhone(String ssn, String phone) {
+//        List<Hikers> hikers = hikersRepository.findBySsnAndPhone(ssn, phone);
+//        if (!hikers.isEmpty()) {
+//            return hikers.get(0);
+//        }
+//        return null;
+//    }
+
 }

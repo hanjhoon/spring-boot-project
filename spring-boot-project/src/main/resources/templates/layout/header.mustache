@@ -46,7 +46,7 @@
                                     <!-- 로그인/로그아웃 -->
                                     {{#userid}}
                                         <i class="fa fa-user" style="color: white;"></i>
-                                        <a href="/logout"  role="button">Logout</a>
+                                        <a href="/log-out"  role="button">Logout</a>
                                     {{/userid}}
                                     {{^userid}}
                                         <i class="fa fa-user" style="color: white;"></i>
@@ -69,10 +69,12 @@
                     <!-- 메뉴바-->
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/MyPage">My Page</a></li>
-
-                            <li><a href="/blog">Blog</a></li>
-
+                            {{#hikers}}
+                                <li><a href="/MyPage/{{userid}}">My Page</a></li>
+                            {{/hikers}}
+                            {{^hikers}}
+                                <li><a href="/MyPage">My Page</a></li>
+                            {{/hikers}}
                             <li><a href="/news">News</a></li>
 
                             <li><a href="http://192.168.0.193:8000/">Tracking Road</a></li>

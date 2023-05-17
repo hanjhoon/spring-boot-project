@@ -3,9 +3,8 @@
     <div class="row">
         <div class="col-md-3">
             <ul class="list-unstyled">
-                <li><a href="/MyPage" class="list-group-item"><i class="fa fa-angle-double-right"></i> 내 정보</a> </li>
                 <li><a href="/blog" class="list-group-item"><i class="fa fa-angle-double-right"></i> 내 게시글 </a> </li>
-                <li><a href="/MyPage/update" class="list-group-item"><i class="fa fa-angle-double-right"></i> 정보 변경 </a> </li>
+                <li><a href="/MyPage/update" class="list-group-item"><i class="fa fa-angle-double-right"></i> 회원정보 수정 </a> </li>
                 <li><a href="/MyPage/Setting" class="list-group-item"><i class="fa fa-angle-double-right"></i> 환경설정 </a> </li>
                 <li><a href="/MyPage/QA" class="list-group-item"><i class="fa fa-angle-double-right"></i> Q/A </a> </li>
                 <li><a href="/MyPage/Delete" class="list-group-item"><i class="fa fa-angle-double-right"></i> 회원 탈퇴 </a> </li>
@@ -22,16 +21,12 @@
                                         <form>
                                             <div class="form-group">
                                                 <label for="name">이름</label>
-                                                <input type="text" class="form-control" value="{{lastname}}" id="lastname">
-                                                <input type="text" class="form-control" value="{{firstname}}" id="firstname">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email">email</label>
-                                                <input type="text" class="form-control" value="{{email}}" id="email">
+                                                <input type="text" class="form-control" value="{{lastname}}" id="lastname" readonly>
+                                                <input type="text" class="form-control" value="{{firstname}}" id="firstname" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="ssn">ssn</label>
-                                                <input type="text" class="form-control" value="{{ssn}}" id="ssn">
+                                                <input type="text" class="form-control" value="{{ssn}}" id="ssn" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="age">age</label>
