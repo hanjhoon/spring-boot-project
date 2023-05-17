@@ -2,11 +2,11 @@
   background-color: black;
   color: white;
 }
-
+​
 .navigation {
-    background-color: green;
+    background-color: blue;
 }
-
+​
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -33,7 +33,7 @@ img {
     font-size: 10pt;
     padding: 10px 25px;
 }
-
+​
 .btn-theme:hover {
     background: #494949;
 }
@@ -43,7 +43,7 @@ img {
 }
 .social,
 .action {
-
+​
 }
 .social ul,
 .action ul {
@@ -60,15 +60,15 @@ img {
 .action ul li a {
     color: #fff;
     transition: .2s all ease-in-out;
-    
-}
 
+}
+​
 .social ul li a:hover,
 .action ul li a:hover {
     color: #666;
-    
-}
 
+}
+​
 .header {
     min-height: 200px;
 }
@@ -127,7 +127,7 @@ form.navbar-form button {
     float: left;
     margin-left: 10px;
 }
-
+​
 .navigation {
     background: #40bea7;
 }
@@ -172,7 +172,7 @@ ul.dropdown-menu li a {
     color: #ffffff;
     text-transform: uppercase;
 }
-
+​
 .slider .item {
     height: 390px;
     background-size: contain;
@@ -180,7 +180,7 @@ ul.dropdown-menu li a {
     background-repeat: no-repeat;
     background-position: center;
 }
-
+​
 .carousel-caption {
     top: 10%;
     right: 5%;
@@ -219,7 +219,7 @@ ol.carousel-indicators li.active {
 .big-slider .carousel-caption {
     top: 25%;
 }
-
+​
 .banner {
     margin: 30px 0px;
 }
@@ -276,7 +276,7 @@ ol.carousel-indicators li.active {
 .nav.nav-tabs {
     background: #40bea7;
     border: none;
-    text-transform: uppercase;  
+    text-transform: uppercase;
     margin: 0px 15px 30px;
     overflow: hidden;
     font-family: 'raleway', sans-serif;
@@ -341,7 +341,7 @@ ol.carousel-indicators li.active {
 }
 .single-product:hover .product-hover {
     opacity:1;
-    height:50%       
+    height:50%
 }
 .product-hover ul {
     margin: 0px;
@@ -367,7 +367,7 @@ ol.carousel-indicators li.active {
     background: #fff;
 }
 .blog {
-    
+
 }
 .blog-title {
     background: #40bea7;
@@ -389,13 +389,13 @@ ol.carousel-indicators li.active {
 }
 .blog-title a {
     padding: 10px 0px;
-    font-size: 10pt;    
+    font-size: 10pt;
 }
 .blog-title a:hover {
     color: #666;
 }
 .single-post {
-    
+
 }
 .post-thumbnail {
     position: relative;
@@ -438,7 +438,7 @@ ol.carousel-indicators li.active {
 .single-widget {
     position: relative;
     padding-right: 20px;
-} 
+}
 .single-widget:after {
     position: absolute;
     right: 0;
@@ -479,9 +479,9 @@ ol.carousel-indicators li.active {
     color: #fff;
     font-family: 'raleway', sans-serif;
 }
-
-
-
+​
+​
+​
 .short-description {
     margin: 20px 0px;
 }
@@ -520,7 +520,7 @@ ol.carousel-indicators li.active {
 .thumb-main-image img {
     width: 100%;
 }
-
+​
 h1.product-title {
     margin: 0px;
     padding: 0px;
@@ -567,7 +567,7 @@ p.short-info {
     border-bottom: 2px solid #bebebe;
 }
 .purchase-form input.qt {
-    
+
 }
 .qt-area {
     display: inline-block;

@@ -1,0 +1,60 @@
+{{>layout/header}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="list-unstyled">
+                <li><a href="/MyPage" class="list-group-item"><i class="fa fa-angle-double-right"></i> 내 정보</a> </li>
+                <li><a href="/blog" class="list-group-item"><i class="fa fa-angle-double-right"></i> 내 게시글 </a> </li>
+                <li><a href="/MyPage/update" class="list-group-item"><i class="fa fa-angle-double-right"></i> 정보 변경 </a> </li>
+                <li><a href="/MyPage/Setting" class="list-group-item"><i class="fa fa-angle-double-right"></i> 환경설정 </a> </li>
+                <li><a href="/MyPage/QA" class="list-group-item"><i class="fa fa-angle-double-right"></i> Q/A </a> </li>
+                <li><a href="/MyPage/Delete" class="list-group-item"><i class="fa fa-angle-double-right"></i> 회원 탈퇴 </a> </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-9">
+                                {{#hikers}}
+                                    <div class="form-group">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="name">이름</label>
+                                                <input type="text" class="form-control" value="{{lastname}}" id="lastname">
+                                                <input type="text" class="form-control" value="{{firstname}}" id="firstname">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">email</label>
+                                                <input type="text" class="form-control" value="{{email}}" id="email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="ssn">ssn</label>
+                                                <input type="text" class="form-control" value="{{ssn}}" id="ssn">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="age">age</label>
+                                                <input type="text" class="form-control" value="{{age}}" id="age">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="sex">sex</label>
+                                                <input type="text" class="form-control" value="{{sex}}" id="sex">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="phone">phone</label>
+                                                <input type="text" class="form-control" value="{{phone}}" id="phone">
+                                            </div>
+                                        </form>
+                                    </div>
+                                {{/hikers}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/app/index.js"></script>
+{{>layout/footer}}

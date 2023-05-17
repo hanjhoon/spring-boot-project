@@ -27,7 +27,32 @@ const main = {
             climbing_mountain: document.querySelector('#climbing_mountain').value,
             climbing_date: document.querySelector('#climbing_date').value,
         };
+        login() {
+            console.log("login");
+            const data = {
+                userid: document.querySelector('#userid').value,
+                pw: document.querySelector('#pw').value,
+            };
 
+            fetch('/login-stay', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8",
+                },
+                body: JSON.stringify(data),
+            })
+            .then((response) => {
+                if (response.status === 200 || response.status === 201) {
+                    alert("로그인 성공.");
+                    window.location.href = "/";
+                } else {
+                    alert("로그인 실패.");
+                }
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+        },
         // fetch API를 이용해서 POST 요청을 보내고 그 결과를 처리
         fetch('/api/v1/posts', {
             method: "POST",
@@ -40,7 +65,7 @@ const main = {
             if(response.status===200||response.status===201) {
                 // 저장 성공
                 alert("글이 등록되었습니다.");
-                window.location.href="/";
+                window.location.href="/finds";
             } else {
                 // 저장 실패
                 alert("오류가 1.");
@@ -48,7 +73,7 @@ const main = {
         })
         .catch((error) => {
             // 네트워크 오류 등 예외 발생
-            alert(error.message)
+            alert("기타 오류")
         });
     },
 

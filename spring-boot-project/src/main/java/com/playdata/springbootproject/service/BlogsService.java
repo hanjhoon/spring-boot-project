@@ -24,7 +24,7 @@ public class BlogsService {
     public Long update(Long id, BlogsSaveRequestDto requestDto) {
         Blogs blogs = blogsRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글을 찾을 수 없습니다. id=" +id));
-        blogs.update(blogs.getTitle(), blogs.getHikerid(), blogs.getContent(), blogs.getPmntnsn());
+        blogs.update(blogs.getTitle(), blogs.getUserid(), blogs.getContent(), blogs.getPmntnsn());
         return id;
     }
 
@@ -40,8 +40,8 @@ public class BlogsService {
                 .collect(Collectors.toList());
     }
 
-    public List<BlogsResponseDto> findByHikerid(String hikerid) {
-        List<Blogs> blogs = blogsRepository.findByHikerid(hikerid);
+    public List<BlogsResponseDto> findByUserid(String userid) {
+        List<Blogs> blogs = blogsRepository.findByUserid(userid);
 
         return blogs.stream()
                 .map(BlogsResponseDto::new)

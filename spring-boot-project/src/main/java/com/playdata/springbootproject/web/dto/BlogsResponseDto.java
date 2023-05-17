@@ -8,13 +8,13 @@ public class BlogsResponseDto {
     private Long id;
     private String title;
     private String content;
-    private String hikerid;
+    private String userid;
     private String pmntnsn;
     public BlogsResponseDto(Blogs entity) {
         this.id=entity.getId();
         this.title= entity.getTitle();
         this.content=entity.getContent();
-        this.hikerid=entity.getHikerid();
+        this.userid=entity.getUserid();
         this.pmntnsn=entity.getPmntnsn();
     }
 }

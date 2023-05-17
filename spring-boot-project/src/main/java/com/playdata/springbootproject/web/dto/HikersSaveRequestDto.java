@@ -10,17 +10,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class HikersSaveRequestDto {
-    private String id;
+    private String userid;
     private String pw;
     private String firstname;
     private String lastname;
     private String ssn;
-    private int age;
+    private Integer age;
     private String sex;
     private String phone;
     public Hikers toEntity(){
         return Hikers.builder()
-                .id(id)
+                .userid(userid)
                 .pw(pw)
                 .firstname(firstname)
                 .lastname(lastname)

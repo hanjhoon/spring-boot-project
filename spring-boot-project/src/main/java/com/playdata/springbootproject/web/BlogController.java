@@ -3,10 +3,9 @@ import com.playdata.springbootproject.service.BlogsService;
 import com.playdata.springbootproject.web.dto.BlogsResponseDto;
 import com.playdata.springbootproject.web.dto.BlogsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
+@CrossOrigin("*")
 @RequiredArgsConstructor
 @RestController
 public class BlogController {
@@ -30,9 +29,5 @@ public class BlogController {
         blogsService.delete(id);
         return id;
     }
-    @GetMapping("/blogs/{id}")
-    public String blogUpdate(Model model, @PathVariable Long id) {
-        model.addAttribute("blog", blogsService.findById(id));
-        return "blog-update";
-    }
+
 }

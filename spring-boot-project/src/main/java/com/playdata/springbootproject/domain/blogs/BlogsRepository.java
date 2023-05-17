@@ -9,6 +9,6 @@ import java.util.List;
 public interface BlogsRepository extends JpaRepository<Blogs, Long> {
     @Query("SELECT p FROM Blogs p ORDER BY p.id DESC")
     List<Blogs> findAllDesc();
-    @Query("SELECT p FROM Blogs p WHERE p.hikerid  LIKE :hikderid ORDER BY p.id DESC")
-    List<Blogs> findByHikerid(String hikerid);
+    @Query("SELECT p FROM Blogs p WHERE p.userid  LIKE :userid ORDER BY p.id DESC")
+    List<Blogs> findByUserid(String userid);
 }

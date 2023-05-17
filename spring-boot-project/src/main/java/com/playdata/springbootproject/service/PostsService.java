@@ -16,12 +16,10 @@ import java.util.stream.Collectors;
 @Service
 public class PostsService {
     private final PostsRepository postsRepository;
-
     public Long save(PostsSaveRequestDto requestDto) {
 
         return postsRepository.save(requestDto.toEntity()).getId();
     }
-
     @Transactional // 두 개의 작업이 동시에 일어나야 한다
     public Long update(Long id, PostsSaveRequestDto requestDto) {
         Posts posts = postsRepository.findById(id)
@@ -29,20 +27,17 @@ public class PostsService {
         posts.update(requestDto.getTitle(), requestDto.getContent(), requestDto.getClimbing_mountain(), requestDto.getClimbing_date());
         return id;
     }
-
     public PostsResponseDto findById(Long id) {
         Posts posts =postsRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글을 찾을 수 없습니다. id=" +id));
         return new PostsResponseDto(posts);
     }
-    
     @Transactional(readOnly = true)
     public List<PostsListRequestDto> findAllDesc() {
         return postsRepository.findAllDesc().stream()
                 .map(PostsListRequestDto::new)
                 .collect(Collectors.toList());
     }
-
     public List<PostsResponseDto> findByClimbingMountain(String climbing_mountain) {
         List<Posts> posts = postsRepository.findByClimbingMountain(climbing_mountain);
 
@@ -50,8 +45,6 @@ public class PostsService {
                 .map(PostsResponseDto::new)
                 .collect(Collectors.toList());
     }
-
-
     @Transactional
     public Long delete(Long id) {
         Posts posts = postsRepository.findById(id)
@@ -59,5 +52,4 @@ public class PostsService {
         postsRepository.delete(posts);
         return id;
     }
-
 }

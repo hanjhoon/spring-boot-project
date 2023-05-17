@@ -1,0 +1,62 @@
+{{>layout/header}}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>회원 탈퇴가 완료되었습니다.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="list-unstyled">
+                <li><a href="/MyPage" class="list-group-item"><i class="fa fa-angle-double-right"></i> 내 정보</a> </li>
+                <li><a href="/MyPage/myPosts" class="list-group-item"><i class="fa fa-angle-double-right"></i> 내 게시글 </a> </li>
+                <li><a href="/MyPage/update" class="list-group-item"><i class="fa fa-angle-double-right"></i> 정보 변경 </a> </li>
+                <li><a href="/MyPage/Setting" class="list-group-item"><i class="fa fa-angle-double-right"></i> 환경설정 </a> </li>
+                <li><a href="/MyPage/QA" class="list-group-item"><i class="fa fa-angle-double-right"></i> Q/A </a> </li>
+                <li><a href="/MyPage/Delete" class="list-group-item"><i class="fa fa-angle-double-right"></i> 회원 탈퇴 </a> </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <li class="list-group-item">
+                        회원가입을 탈퇴하고 싶으십니까? 한 번 탈퇴시 정보는 다시 돌아오지 않습니다.
+                    </li>
+                    <button type="submit" class="btn btn-primary" onclick="openModal()">탈퇴</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+    }
+
+    // 모달 창 닫기
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+
+    // 모달 창 닫기 버튼 클릭 이벤트 처리
+    var closeButton = document.getElementsByClassName("close")[0];
+    closeButton.onclick = function() {
+        closeModal();
+    }
+
+    // 모달 창 외부 클릭 시 닫기
+    window.onclick = function(event)
+    var modal = document.getElementById("myModal");
+    if (event.target == modal) {
+        closeModal();
+    }
+</script>
+<script src="/js/app/index.js"></script>
+{{>layout/footer}}

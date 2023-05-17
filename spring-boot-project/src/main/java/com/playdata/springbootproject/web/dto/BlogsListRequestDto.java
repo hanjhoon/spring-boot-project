@@ -10,14 +10,14 @@ public class BlogsListRequestDto {
     private Long id;
     private String title;
     private LocalDateTime createdDate;
-    private String hikerid;
+    private String userid;
     private String pmntnsn;
 
     public BlogsListRequestDto(Blogs blogs) {
         this.id = blogs.getId();
         this.title = blogs.getTitle();
         this.createdDate = blogs.getCreatedDate();
-        this.hikerid= blogs.getHikerid();
+        this.userid= blogs.getUserid();
         this.pmntnsn=blogs.getPmntnsn();
     }
 }

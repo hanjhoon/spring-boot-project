@@ -18,7 +18,7 @@ public class BlogsSaveRequestDto {
         return Blogs.builder()
                 .title(title)
                 .content(content)
-                .hikerid(hikerid)
+                .userid(hikerid)
                 .pmntnsn(pmntnsn)
                 .build();
     }

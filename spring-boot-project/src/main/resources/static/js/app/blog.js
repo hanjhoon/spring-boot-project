@@ -5,6 +5,32 @@ const main = {
               window.location.href = `http://192.168.0.193:8000/map/?search=${searchQuery}`;
 
             },
+    login() {
+        console.log("login");
+        const data = {
+            userid: document.querySelector('#userid').value,
+            pw: document.querySelector('#pw').value,
+        };
+
+        fetch('/login-stay', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify(data),
+        })
+        .then((response) => {
+            if (response.status === 200 || response.status === 201) {
+                alert("로그인 성공.");
+                window.location.href = "/";
+            } else {
+                alert("로그인 실패.");
+            }
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
+    },
     // 초기화
     init() {
         const btnSave =document.querySelector('#btn-save');
@@ -15,6 +41,9 @@ const main = {
 
         const btnDelete =document.querySelector('#btn-delete');
         if(btnDelete) btnDelete.addEventListener('click',()=>this.delete());
+
+        userid= document.querySelector('#userid').value,
+        pw= document.querySelector('#pw').value,
     },
 
     // 데이터 저장

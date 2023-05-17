@@ -1,6 +1,7 @@
 package com.playdata.springbootproject.web;
 
 import com.playdata.springbootproject.config.auth.SessionUser;
+import com.playdata.springbootproject.domain.hikers.SessionHikers;
 import com.playdata.springbootproject.service.BlogsService;
 import com.playdata.springbootproject.service.PostsService;
 import jakarta.servlet.http.HttpSession;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
-@CrossOrigin
+@CrossOrigin("*")
 @Controller
 public class IndexController {
     private final PostsService postsService;
@@ -23,26 +24,11 @@ public class IndexController {
 
         //Model: 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있다.
         model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        SessionHikers user = (SessionHikers) httpSession.getAttribute("userid");
         if(user!=null) {
-            model.addAttribute("userName", user.getName());
+            model.addAttribute("userid", user.getUserid());
         }
         return "index";// src/main/resources/templetes/ + "index" + .mustache
-    }
-
-
-    @GetMapping("/posts/{id}")
-    public String postsUpdate(Model model, HttpSession httpSession,@PathVariable Long id) {
-        model.addAttribute("post", postsService.findById(id));
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        if(user!=null) {
-            model.addAttribute("userName", user.getName());
-        }
-        return "posts-update";
-    }
-    @GetMapping("/blogs/save")
-    public String saveBlog(){
-        return "blog-save";
     }
 
     @GetMapping("/news")
@@ -53,34 +39,59 @@ public class IndexController {
         }
         return "news";
     }
-
-    @GetMapping("/finds")
-    public String finds(Model model, HttpSession httpSession, @RequestParam(value="searchQuery", defaultValue = "") String climbing_mountain){
-        //Model: 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있다.
-        model.addAttribute("posts", postsService.findByClimbingMountain(climbing_mountain));
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        if(user!=null) {
-            model.addAttribute("userName", user.getName());
-        }
-        return "find-climb";
+    @GetMapping("/blogs/save")
+    public String saveBlog(){
+        return "blog-save";
+    }
+    @GetMapping("/blogs/{id}")
+    public String blogUpdate(Model model, @PathVariable Long id) {
+        model.addAttribute("blog", blogsService.findById(id));
+        return "blog-update";
     }
     @GetMapping("/blog")
-    public String blog(){
+    public String blog(Model model, HttpSession httpSession, @RequestParam(value="searchQuery", defaultValue = "") String userid){
+        //Model: 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있다.
+        model.addAttribute("blogs", blogsService.findByUserid(userid));
+        SessionUser user = (SessionUser) httpSession.getAttribute("userid");
+        if(user!=null) {
+            model.addAttribute("userid", user.getName());
+        }
         return "blog";
     }
-//    @GetMapping("/blog")
-//    public String blog(Model model, HttpSession httpSession, @RequestParam(value="searchQuery", defaultValue = "") String hikerid){
-//        //Model: 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있다.
-//        model.addAttribute("blogs", blogsService.findByHikerid(hikerid));
-//        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-//        if(user!=null) {
-//            model.addAttribute("userName", user.getName());
-//        }
-//        return "blog";
-//    }
     @GetMapping("/register")
     public String register(Model model, HttpSession httpSession) {
         return "register";
+    }
+    @GetMapping("/log-in")
+    public String logIn(Model model, HttpSession httpSession) {
+        return "login";
+    }
+    @GetMapping("/search")
+    public String search() {
+        return "search";
+    }
+    @GetMapping("/MyPage")
+    public String MyPage() {
+        return "MyPage";
+    }
+    @GetMapping("/MyPage/Setting")
+    public String MyPageSetting() {
+        return "MyPage-Setting";
+    }
+
+    @GetMapping("/MyPage/QA")
+    public String MyPageQA() {
+        return "MyPage-QA";
+    }
+
+    @GetMapping("/MyPage/Delete")
+    public String MyPageDelete() {
+        return "MyPage-Delete";
+    }
+
+    @GetMapping("/MyPage/update")
+    public String MyPageupdate() {
+        return "MyPage-update";
     }
 
 }

@@ -17,21 +17,21 @@ public class Blogs extends AuditingEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
     @Column
-    private String hikerid;
+    private String userid;
     private String pmntnsn;
 
     @Builder
-    public Blogs(String title, String content, String hikerid, String pmntnsn) {
+    public Blogs(String title, String content, String userid, String pmntnsn) {
         this.title = title;
         this.content = content;
-        this.hikerid = hikerid;
+        this.userid = userid;
         this.pmntnsn = pmntnsn;
     }
 
-    public void update(String title, String content, String hikerid, String pmntnsn) {
+    public void update(String title, String content, String userid, String pmntnsn) {
         this.title = title;
         this.content = content;
-        this.hikerid = hikerid;
+        this.userid = userid;
         this.pmntnsn = pmntnsn;
     }
 }

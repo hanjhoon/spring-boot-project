@@ -1,0 +1,45 @@
+{{>layout/header}}
+<div class="container">
+    <div> 페이지 번호: {page}</div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>등산로</th>
+            <th>산</th>
+            <th>등산로 이름</th>
+            <th>등산로 길이</th>
+            <th>등산로 어려움</th>
+            <th>등산로 up시간</th>
+            <th>등산로 down시간</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#pmntn}}
+            <tr>
+                <td><a href="view.jsp?id=${board.id}">
+                    ${pmntn.pmntnn}</a>
+                </td>
+                <td>${pmntn.mntn_code}</td>
+                <td>${pmntn.pmntn_nm}</td>
+                <td>${pmntn.pmntn_lt}</td>
+                <td>${pmntn.pmntn_dffl}</td>
+                <td>${pmntn.pmntn_uppl}</td>
+                <td>${pmntn.pmntn_godn}</td>
+            </tr>
+        {{/pmntn}}
+        </tbody>
+    </table>
+    {{#username}}
+        <div>
+            <a href="write.jsp" class="btn btn-primary">글쓰기</a>
+        </div>
+    {{/username}}
+    <form action="page" method="get">
+        <label for="pagenm">등산로 page</label>
+        <input type="text" id="pagenm" name="pagenm" placeholder="페이지 번호를 입력하세요." >
+        &nbsp
+        <button type="submit" class="btn btn-primary">검색</button>
+    </form>
+</div>
+<script src="/js/app/index.js"></script>
+{{>layout/footer}}

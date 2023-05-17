@@ -7,6 +7,7 @@ const main = {
             },
     // 초기화
     init() {
+
         const btnSave =document.querySelector('#btn-save');
         if(btnSave) btnSave.addEventListener('click',()=>this.save());
 
@@ -24,6 +25,7 @@ const main = {
 
         const btnDelete2 =document.querySelector('#btn-delete2');
         if(btnDelete2) btnDelete.addEventListener('click',()=>this.delete2());
+
     },
 
     // 데이터 저장

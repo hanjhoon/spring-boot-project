@@ -1,6 +1,8 @@
 package com.playdata.springbootproject.domain.hikers;
 import com.playdata.springbootproject.domain.AuditingEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,18 +15,21 @@ import java.util.Date;
 @Entity
 public class Hikers extends AuditingEntity {
     @Id // PK
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
+    private Long id; // BIGINT
+    private String userid;
     private String pw;
     private String firstname;
     private String lastname;
     private String ssn;
-    private int age;
+    private Integer age;
     private String sex;
     private String phone;
 
     @Builder
-    public Hikers(String id, String pw, String firstname, String lastname, String ssn, int age, String sex, String phone) {
+    public Hikers(Long id, String userid, String pw, String firstname, String lastname, String ssn, Integer age, String sex, String phone) {
         this.id=id;
+        this.userid=userid;
         this.pw = pw;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -33,7 +38,8 @@ public class Hikers extends AuditingEntity {
         this.sex = sex;
         this.phone = phone;
     }
-    public void update(String pw, String firstname, String lastname, int age, String sex, String phone) {
+
+    public void update(String pw, String firstname, String lastname, Integer age, String sex, String phone) {
         this.pw = pw;
         this.firstname = firstname;
         this.lastname = lastname;
