@@ -16,41 +16,53 @@ import org.springframework.web.bind.annotation.*;
 public class MyPageController {
     private final HikersService hikersService;
     @GetMapping("/MyPage/{userid}")
-    public String MyPageByUserid(Model model, HttpSession httpSession, String userid){
-        SessionHikers user = (SessionHikers) httpSession.getAttribute("userid");
-        model.addAttribute("hikers", hikersService.findByUserid(userid));
-        if(user!=null) {
-            model.addAttribute("userid", user.getUserid());
-        }
-        return "MyPage";
-    }
-    @GetMapping("/MyPage")
-    public String MyPage(Model model, HttpSession httpSession, String userid) {
+    public String MyPageByUserid(Model model, HttpSession httpSession, @PathVariable String userid) {
+        // 로그인한 hiker 정보 가져오기
+        model.addAttribute("hiker", hikersService.findByUserid(userid));
+        // 세션 유지
         SessionHikers user = (SessionHikers) httpSession.getAttribute("userid");
         if(user!=null) {
             model.addAttribute("userid", user.getUserid());
         }
         return "MyPage";
     }
-    @GetMapping("/MyPage/Setting")
-    public String MyPageSetting() {
-        return "MyPage-Setting";
+    @GetMapping("/MyPage/Setting/{userid}")
+    public String MyPageSetting(Model model, HttpSession httpSession, @PathVariable String userid) {
+        model.addAttribute("hiker", hikersService.findByUserid(userid));
+
+        SessionHikers user = (SessionHikers) httpSession.getAttribute("userid");
+        if(user!=null) {
+            model.addAttribute("userid", user.getUserid());
+
+        } return "MyPage-Setting";
     }
 
-    @GetMapping("/MyPage/QA")
-    public String MyPageQA() {
-        return "MyPage-QA";
+    @GetMapping("/MyPage/QA/{userid}")
+    public String MyPageQA(Model model, HttpSession httpSession, @PathVariable String userid) {
+        model.addAttribute("hiker", hikersService.findByUserid(userid));
+
+        SessionHikers user = (SessionHikers) httpSession.getAttribute("userid");
+        if(user!=null) {
+            model.addAttribute("userid", user.getUserid());
+
+        } return "MyPage-QA";
     }
 
-    @GetMapping("/MyPage/Delete")
-    public String MyPageDelete() {
-        return "MyPage-Delete";
+    @GetMapping("/MyPage/Delete/{userid}")
+    public String MyPageDelete(Model model, HttpSession httpSession, @PathVariable String userid) {
+        model.addAttribute("hiker", hikersService.findByUserid(userid));
+
+        SessionHikers user = (SessionHikers) httpSession.getAttribute("userid");
+        if(user!=null) {
+            model.addAttribute("userid", user.getUserid());
+
+        } return "MyPage-Delete";
     }
 
-    @GetMapping("/MyPage/update")
-    public String MyPageUpdate(Model model, HttpSession httpSession, Long id) {
+    @GetMapping("/MyPage/Update/{userid}")
+    public String MyPageUpdate(Model model, HttpSession httpSession, @PathVariable String userid) {
+        model.addAttribute("hiker", hikersService.findByUserid(userid));
 
-        model.addAttribute("hiker", hikersService.findById(id));
         SessionHikers user = (SessionHikers) httpSession.getAttribute("userid");
         if(user!=null) {
             model.addAttribute("userid", user.getUserid());

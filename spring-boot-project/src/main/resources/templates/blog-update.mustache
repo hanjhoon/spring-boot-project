@@ -1,5 +1,5 @@
 {{>layout/header}}
-<div class="container">c
+<div class="container">
     <h1>블로그 수정</h1>
     <div class="col-md-12">
         <div class="col-md-4">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     <label for="author">닉네임</label>
-                    <input type="text" class="form-control" id="hikerid" value="{{blog.hikerid}}" readonly>
+                    <input type="text" class="form-control" id="userid" value="{{blog.userid}}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="author">산이름</label>
@@ -25,7 +25,9 @@
                     <textarea id="content"  class="form-control" placeholder="내용을 입력하세요.">{{blog.content}}</textarea>
                 </div>
                 <div class="form-group">
-                    <a href="/" role="button" class="btn btn-secondary">취소</a>
+                    {{#userid}}
+                        <a href="/blog/{{userid}}" role="button" class="btn btn-secondary">취소</a>
+                    {{/userid}}
                     <button id="btn-update" class="btn btn-primary" type="button">수정 완료</button>
                     <button id="btn-delete" class="btn btn-danger" type="button">삭제</button>
                 </div>
@@ -33,5 +35,5 @@
         </div>
     </div>
 </div>
-
+<script src="/js/app/blog.js"></script>
 {{>layout/footer}}

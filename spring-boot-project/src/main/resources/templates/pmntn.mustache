@@ -1,0 +1,90 @@
+{{>layout/header}}
+    <div class="content">
+        <div class="container pmntn">
+            <h1 style="margin-left: 20px; margin-bottom: 20px; text-align: left; font-size: 20px; padding: 10px 0px;">등산로 찾기</h1>
+            <nav class="filter">
+                <div class="space">
+                    <form action="/pmntn" method="get">
+                        <label for="level">난이도</label>
+                        <select name="level" id="level">
+                            <option value="#" selected>전체</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <label for="time">소요시간</label>
+                        <select name="time" id="time">
+                            <option value="#" selected>전체</option>
+                            <option value="0">~60분</option>
+                            <option value="1">1~2시간</option>
+                            <option value="2">2~3시간</option>
+                            <option value="3">3~4시간</option>
+                            <option value="4">4~5시간</option>
+                            <option value="5">5~6시간</option>
+                            <option value="6">6~7시간</option>
+                            <option value="7">7시간~</option>
+                        </select>
+                        <input type="submit"  class="btn-search" value="검색"></input>
+                    </form>
+                </div>
+<!--                <div class="space">-->
+<!--                    <form action="search" method="get">-->
+<!--                        <label for="pmntnsn">등산로 번호</label>-->
+<!--                        <input type="text" id="pmntnsn" name="pmntnsn" placeholder="등산로 번호를 입력하세요." required>-->
+<!--                    </form>-->
+<!--                </div>-->
+            </nav>
+            <div style="text-align: right">
+                검색 결과수: {{dataNum}}
+            </div>
+            <table class = "table">
+                <thead class="table-head">
+                <tr>
+                    <th><b>산</b></th>
+                    <th><b>등산로</b></th>
+                    <th><b>총 거리</b></th>
+                    <th><b>난이도</b></th>
+                    <th><b>소요시간</b></th>
+                    <th><b>상세경로</b></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#pmntn}}
+                    <tr>
+                        <td><a href="http://192.168.0.193:8000/map/?search={{mntnNm}}">{{pmntnSn}}</a></td>
+
+                        <td class="pmntn_detail">{{mntnNm}}&nbsp{{pmntnNm}}</td>
+                        <td>{{pmntnLt}}km</td>
+                        <td>{{pmntnDffl}}</td>
+                        <td class="pmntn_tm">{{pmntnTm}}분</td>
+                        <td class="pmntn_detail">{{pmntnMain}}</td>
+                    </tr>
+                {{/pmntn}}
+                {{#pmntnSearched}}
+                    <tr>
+                        <td><a href="#">{{pmntnSn}}</a></td>
+
+                        <td class="pmntn_detail">{{mntnNm}}&nbsp{{pmntnNm}}</td>
+                        <td>{{pmntnLt}}km</td>
+                        <td>{{pmntnDffl}}</td>
+                        <td class="pmntn_tm">{{pmntnTm}}분</td>
+                        <td class="pmntn_detail">{{pmntnMain}}</td>
+                    </tr>
+                {{/pmntnSearched}}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="page" style="display: flex; justify-content: center; align-items: center;  font-size: 20px;">
+            <a style="padding-right: 10px;">페이지: {{page}} / {{maxPage}}</a>
+            {{#hasPreviousPage}}
+                <a href="/pmntn?pagenm={{previousPage}}&level={{level}}&time={{time}}" class="previous page">&#8249;</a>
+            {{/hasPreviousPage}}
+            {{#hasNextPage}}
+                <a href="/pmntn?pagenm={{nextPage}}&level={{level}}&time={{time}}" class="next page" style="color: green;">&#8250;</a>
+            {{/hasNextPage}}
+
+        </div>
+
+    </div>
+{{>layout/footer}}

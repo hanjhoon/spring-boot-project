@@ -2,15 +2,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <ul class="list-unstyled">
-                <li><a href="/MyPage/myPosts" class="list-group-item"><i class="fa fa-angle-double-right"></i> 내 게시글 </a> </li>
-                <li><a href="/MyPage/update" class="list-group-item"><i class="fa fa-angle-double-right"></i> 정보 변경 </a> </li>
-                <li><a href="/MyPage/Setting" class="list-group-item"><i class="fa fa-angle-double-right"></i> 환경설정 </a> </li>
-                <li><a href="/MyPage/QA" class="list-group-item"><i class="fa fa-angle-double-right"></i> Q/A </a> </li>
-                <li><a href="/MyPage/Delete" class="list-group-item"><i class="fa fa-angle-double-right"></i> 회원 탈퇴 </a> </li>
-            </ul>
-        </div>
+        {{>layout/mypage-menu}}
         <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
@@ -56,5 +48,5 @@
         </div>
     </div>
 </div>
-<script src="/js/app/index.js"></script>
+<script src="/js/app/register.js"></script>
 {{>layout/footer}}

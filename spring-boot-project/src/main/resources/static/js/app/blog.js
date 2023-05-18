@@ -5,32 +5,7 @@ const main = {
               window.location.href = `http://192.168.0.193:8000/map/?search=${searchQuery}`;
 
             },
-    login() {
-        console.log("login");
-        const data = {
-            userid: document.querySelector('#userid').value,
-            pw: document.querySelector('#pw').value,
-        };
 
-        fetch('/login-stay', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-            },
-            body: JSON.stringify(data),
-        })
-        .then((response) => {
-            if (response.status === 200 || response.status === 201) {
-                alert("로그인 성공.");
-                window.location.href = "/";
-            } else {
-                alert("로그인 실패.");
-            }
-        })
-        .catch((error) => {
-            alert(error.message);
-        });
-    },
     // 초기화
     init() {
         const btnSave =document.querySelector('#btn-save');
@@ -42,8 +17,6 @@ const main = {
         const btnDelete =document.querySelector('#btn-delete');
         if(btnDelete) btnDelete.addEventListener('click',()=>this.delete());
 
-        userid= document.querySelector('#userid').value,
-        pw= document.querySelector('#pw').value,
     },
 
     // 데이터 저장
@@ -52,10 +25,10 @@ const main = {
             title: document.querySelector('#title').value,
             content: document.querySelector('#content').value,
             pmntnsn: document.querySelector('#pmntnsn').value,
-            hikerid: document.querySelector('#hikerid').value,
+            userid: document.querySelector('#userid').value,
         };
         // fetch API를 이용해서 POST 요청을 보내고 그 결과를 처리
-        fetch('/api/v1/blogs', {
+        fetch('/api/v1/blog', {
             method: "POST",
             headers: {
                 "Content-Type":"application/json;charset=utf-8",
@@ -66,7 +39,7 @@ const main = {
             if(response.status===200||response.status===201) {
                 // 저장 성공
                 alert("글이 등록되었습니다.");
-                window.location.href="/blog";
+                window.location.href="/blog/" + data.userid
             } else {
                 // 저장 실패
                 alert("오류가 1.");
@@ -82,14 +55,13 @@ const main = {
         const data = {
             title: document.querySelector("#title").value,
             content: document.querySelector("#content").value,
-            hikerid: document.querySelector("#hikerid").value,
+            userid: document.querySelector("#userid").value,
             pmntnsn: document.querySelector("#pmntnsn").value,
-
         };
 
        const id = document.querySelector("#id").value;
 
-       fetch(`/api/v1/blogs/${id}`, {
+       fetch(`/api/v1/blog/${id}`, {
             method: "PUT",
             headers: {
                        "Content-Type":"application/json;char=utf-8",
@@ -99,7 +71,7 @@ const main = {
              if(response.status===200||response.status===201) {
                  // 수정 성공
                  alert("글이 수정되었습니다.");
-                 window.location.href="/blog";
+                 window.location.href="/blog/" + data.userid
              } else {
                  // 수정 실패
                  alert("오류가 2.");
@@ -120,7 +92,7 @@ const main = {
             if(response.status===200||response.status===201) {
             // 삭제 성공
             alert("글이 삭제되었습니다.");
-            window.location.href="/blog";
+            window.location.href="/blog/" + data.userid
             } else {
             // 삭제 실패
             alert("오류가 3.");

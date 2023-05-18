@@ -41,9 +41,11 @@ public class BlogsService {
     }
 
     public List<BlogsResponseDto> findByUserid(String userid) {
-        List<Blogs> blogs = blogsRepository.findByUserid(userid);
-
-        return blogs.stream()
+        List<Blogs> blog = blogsRepository.findByUserid(userid);
+        if (blog == null) {
+            throw new IllegalArgumentException("userid=" + userid + " / 해당 회원정보를 찾을 수 없습니다.");
+        }
+        return blog.stream()
                 .map(BlogsResponseDto::new)
                 .collect(Collectors.toList());
     }

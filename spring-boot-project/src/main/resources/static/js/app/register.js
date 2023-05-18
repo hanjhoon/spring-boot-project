@@ -16,6 +16,87 @@ const main = {
         const btnDelete =document.querySelector('#btn-delete');
         if(btnDelete) btnDelete.addEventListener('click',()=>this.delete());
 
+        const btnIdSearch =document.querySelector('#btn-id-search');
+        if(btnIdSearch) btnIdSearch.addEventListener('click',()=>this.idSearch());
+
+        const btnPwSearch =document.querySelector('#btn-pw-search');
+        if(btnPwSearch) btnPwSearch.addEventListener('click',()=>this.pwSearch());
+
+    },
+
+    async idSearch() {
+        const data = {
+            ssn: document.querySelector('#ssn').value,
+            phone: document.querySelector('#phone').value,
+        };
+
+        fetch('/api/v1/idSearch', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(data),
+        })
+        .then((response) => {
+            if (response.status === 200 || response.status === 201) {
+                return response.json(); // JSON 형식의 응답 본문을 읽음
+            } else {
+                throw new Error("가입 정보를 다시 확인해주세요.");
+            }
+        })
+        .then((data) => {
+            const userId = data.userid;
+            alert("아이디는 " + userId + " 입니다");
+             window.location.href = "/log-in";
+        })
+        .catch((error) => {
+            // 네트워크 오류 등 예외 발생
+            console.log(error);
+            alert(error.message);
+        });
+    },
+
+    async pwSearch(){
+        const data = {
+            ssn: document.querySelector('#ssn').value,
+            phone: document.querySelector('#phone').value,
+            userid: document.querySelector('#userid').value,
+        }
+
+        fetch('/api/v1/pwSearch', {
+            method: "POST",
+            headers: {
+                "Content-Type":"application/json;charset=utf-8",
+            },
+            body: JSON.stringify(data),
+        })
+//       .then((response) => response.json()
+//        {
+//           if(response.status===200||response.status===201) {
+//               window.location.href="/log-in";
+//           } else {
+//               alert("가입 정보를 다시 확인해주세요.");
+//               window.location.href="/pw_search";
+//           }
+//       })
+        .then((response) => {
+            if (response.status === 200 || response.status === 201) {
+                return response.json(); // JSON 형식의 응답 본문을 읽음
+            } else {
+                throw new Error("비밀번호를 검색할 수 없습니다.");
+            }
+        })
+        .then((data) => {
+            // 비밀번호를 사용하여 원하는 동작을 수행
+            const password = data.pw;
+            alert("비밀번호는 " + password + " 입니다");
+            window.location.href = "/log-in";
+        })
+        .catch((error) => {
+            // 네트워크 오류 등 예외 발생
+            console.log(error);
+            alert(error.message)
+        });
     },
 
     // 데이터 저장
@@ -76,7 +157,7 @@ const main = {
         };
 
        const id = document.querySelector("#id").value;
-
+       const userid = document.querySelector("#userid").value;
        fetch(`/api/v1/registers/${id}`, {
             method: "PUT",
             headers: {
@@ -87,7 +168,7 @@ const main = {
              if(response.status===200||response.status===201) {
                  // 수정 성공
                  alert("회원정보가 수정되었습니다.");
-                 window.location.href="/";
+                 window.location.href="/MyPage/"+userid;
              } else {
                  // 수정 실패
                  alert("오류가 2.");

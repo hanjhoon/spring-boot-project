@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 public class LoginController {
     private HikersService hikersService;
+    private Hikers hikers;
     @Autowired
     private LoginService loginService;
     @PostMapping("/log-in")
@@ -27,12 +28,15 @@ public class LoginController {
             httpSession.setAttribute("userid", new SessionHikers(dto.getUserid()));
             model.addAttribute("userid", new SessionHikers(dto.getUserid()));
             httpSession.setMaxInactiveInterval(60 * 30);
+
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             model.addAttribute("error", "아이디가 존재하지 않거나 비밀번호가 일치하지 않습니다.");
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
     }
+
+
 
 //    @GetMapping("/findUserid")
 //    public String findUserid(@RequestParam("ssn") String ssn, @RequestParam("phone") String phone, Model model) {

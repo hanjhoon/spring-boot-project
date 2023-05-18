@@ -3,7 +3,7 @@
     <div class="col-md-12">
         <form method="get">
         </form>
-        <a href="/blogs/save" class="btn btn-primary">글 등록</a>
+        <a href="/blog/save" class="btn btn-primary">글 등록</a>
         <!-- 블로그 글 리스트 -->
         <table class="table table-horizontal table-bordered">
             <thead class="thead-dark">
@@ -16,18 +16,18 @@
             </tr>
             </thead>
             <tbody id="tbody">
-            {{#blogs}}
+            {{#blog}}
                 <tr>
                     <td>{{id}}</td>
                     <td><a href="/blogs/{{id}}">{{title}}</a></td>
-                    <td>{{hikerid}}</td>
+                    <td>{{userid}}</td>
                     <td>{{pmntnsn}}</td>
                     <td>{{content}}</td>
                 </tr>
-            {{/blogs}}
+            {{/blog}}
             </tbody>
         </table>
     </div>
 </div>
-
+<script src="/js/app/blog.js"></script>
 {{>layout/footer}}

@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 public class BlogsSaveRequestDto {
     private String title;
     private String content;
-    private String hikerid;
+    private String userid;
     private String pmntnsn;
     public Blogs toEntity(){
         return Blogs.builder()
                 .title(title)
                 .content(content)
-                .userid(hikerid)
+                .userid(userid)
                 .pmntnsn(pmntnsn)
                 .build();
     }

@@ -2,7 +2,6 @@ package com.playdata.springbootproject.service;
 
 import com.playdata.springbootproject.domain.hikers.Hikers;
 import com.playdata.springbootproject.domain.hikers.HikersRepository;
-import com.playdata.springbootproject.domain.posts.Posts;
 import com.playdata.springbootproject.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -45,16 +44,33 @@ public class HikersService {
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글을 찾을 수 없습니다. id=" +id));
         return new HikersResponseDto(hikers);
     }
-    public Object findByUserid(String userid) {
-        return userid;
+
+    public HikersResponseDto findByUserid(String userid) {
+        Hikers hiker = hikersRepository.findByUserid(userid);
+        if (hiker == null) {
+            throw new IllegalArgumentException("userid=" + userid + " / 해당 회원정보를 찾을 수 없습니다.");
+        }
+
+        return new HikersResponseDto(hiker);
     }
 
-//    public Hikers findBySsnAndPhone(String ssn, String phone) {
-//        List<Hikers> hikers = hikersRepository.findBySsnAndPhone(ssn, phone);
-//        if (!hikers.isEmpty()) {
-//            return hikers.get(0);
-//        }
-//        return null;
-//    }
+    public IdSearchResponseDto findBySsnAndPhone(String ssn, String phone) {
+        Hikers hiker = hikersRepository.findBySsnAndPhone(ssn, phone);
+        if (hiker == null) {
+            throw new IllegalArgumentException("아이디 찾기 / 해당 회원정보를 찾을 수 없습니다.");
+        } else {
+            System.out.println("아이디는 " + hiker.getUserid() + " 입니다");
+        }
+        return IdSearchResponseDto.builder().userid(hiker.getUserid()).build();
+    }
+
+
+    public PwSearchResponseDto findBySsnAndPhoneAndUserid(String ssn, String phone, String userid) {
+        Hikers hiker = hikersRepository.findBySsnAndPhoneAndUserid(ssn, phone, userid);
+        if (hiker == null) {
+            throw new IllegalArgumentException("비밀번호 찾기 / 해당 회원정보를 찾을 수 없습니다.");
+        }
+        return PwSearchResponseDto.builder().pw(hiker.getPw()).build();
+    }
 
 }

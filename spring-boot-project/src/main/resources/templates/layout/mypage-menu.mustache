@@ -1,0 +1,11 @@
+<div class="col-md-3">
+    <ul class="list-unstyled">
+        {{#userid}}
+            <li><a href="/blog/{{userid}}" class="list-group-item"><i class="fa fa-angle-double-right"></i> 내 게시글 </a> </li>
+            <li><a href="/MyPage/Update/{{userid}}" class="list-group-item"><i class="fa fa-angle-double-right"></i> 회원정보 수정 </a> </li>
+            <li><a href="/MyPage/Delete/{{userid}}" class="list-group-item"><i class="fa fa-angle-double-right"></i> 회원 탈퇴 </a> </li>
+            <li><a href="/MyPage/Setting/{{userid}}" class="list-group-item"><i class="fa fa-angle-double-right"></i> 환경설정 </a> </li>
+            <li><a href="/MyPage/QA/{{userid}}" class="list-group-item"><i class="fa fa-angle-double-right"></i> Q/A </a> </li>
+        {{/userid}}
+    </ul>
+</div>

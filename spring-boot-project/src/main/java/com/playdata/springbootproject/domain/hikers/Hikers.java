@@ -7,10 +7,12 @@ import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
+@ToString
 @Getter
 @NoArgsConstructor
 @Entity

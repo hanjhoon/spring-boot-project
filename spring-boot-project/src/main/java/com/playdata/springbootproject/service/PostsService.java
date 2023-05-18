@@ -8,7 +8,6 @@ import com.playdata.springbootproject.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +24,13 @@ public class PostsService {
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글을 찾을 수 없습니다. id=" +id));
         posts.update(requestDto.getTitle(), requestDto.getContent(), requestDto.getClimbing_mountain(), requestDto.getClimbing_date());
+        return id;
+    }
+    @Transactional
+    public Long delete(Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("해당 게시글을 찾을 수 없습니다. id= " + id));
+        postsRepository.delete(posts);
         return id;
     }
     public PostsResponseDto findById(Long id) {
@@ -44,12 +50,5 @@ public class PostsService {
         return posts.stream()
                 .map(PostsResponseDto::new)
                 .collect(Collectors.toList());
-    }
-    @Transactional
-    public Long delete(Long id) {
-        Posts posts = postsRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("해당 게시글을 찾을 수 없습니다. id= " + id));
-        postsRepository.delete(posts);
-        return id;
     }
 }

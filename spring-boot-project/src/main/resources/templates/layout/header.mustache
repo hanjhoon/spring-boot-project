@@ -69,14 +69,12 @@
                     <!-- 메뉴바-->
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav navbar-right">
-                            {{#hikers}}
+                            {{#userid}}
                                 <li><a href="/MyPage/{{userid}}">My Page</a></li>
-                            {{/hikers}}
-                            {{^hikers}}
-                                <li><a href="/MyPage">My Page</a></li>
-                            {{/hikers}}
-                            <li><a href="/news">News</a></li>
+                            {{/userid}}
 
+                            <li><a href="/news">News</a></li>
+                            <li><a href="/pmntn">Tracking Info</a></li>
                             <li><a href="http://192.168.0.193:8000/">Tracking Road</a></li>
 
                             <li><a href="/finds">Find Duo</a></li>
