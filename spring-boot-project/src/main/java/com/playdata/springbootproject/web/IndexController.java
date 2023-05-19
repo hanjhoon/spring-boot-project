@@ -50,15 +50,18 @@ public class IndexController {
         }
         return "register";
     }
+
     @GetMapping("/log-in")
     public String logIn(Model model, HttpSession httpSession) {
         return "login";
     }
+
     @GetMapping("/log-out")
     public String logOut(Model model, HttpSession httpSession) {
         httpSession.invalidate();
         return "login";
     }
+
     @GetMapping("/search")
     public String search() {
         return "search";

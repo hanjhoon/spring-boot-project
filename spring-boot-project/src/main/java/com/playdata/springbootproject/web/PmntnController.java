@@ -1,6 +1,7 @@
 package com.playdata.springbootproject.web;
 
 
+import com.playdata.springbootproject.domain.hikers.SessionHikers;
 import com.playdata.springbootproject.service.PmntnService;
 import com.playdata.springbootproject.web.dto.PmntnResponseDto;
 import jakarta.servlet.http.HttpSession;
@@ -52,6 +53,11 @@ public class PmntnController {
                               @RequestParam(value = "pagenm", defaultValue = "0") String pagenm,
                               @RequestParam(value = "level", defaultValue = "#") String level,
                               @RequestParam(value = "time", defaultValue = "#") String time) {
+        // 세션 유지
+        SessionHikers user = (SessionHikers) httpSession.getAttribute("userid");
+        if(user!=null) {
+            model.addAttribute("userid", user.getUserid());
+        }
 
         pageNum = Integer.parseInt(pagenm);
         model.addAttribute("page", pageNum+1);
