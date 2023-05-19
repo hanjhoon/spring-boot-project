@@ -66,5 +66,14 @@ public class IndexController {
     public String search() {
         return "search";
     }
+
+    @GetMapping("/tracking-road")
+    public String trackingRoad(Model model, HttpSession httpSession) {
+        SessionHikers user = (SessionHikers) httpSession.getAttribute("userid");
+        if(user!=null) {
+            model.addAttribute("userid", user.getUserid());
+
+        }
+        return "redirect:http://192.168.0.193:8000";}
 }
 

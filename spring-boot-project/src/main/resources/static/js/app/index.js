@@ -23,11 +23,11 @@ const main = {
     save() {
         console.log("save");
         const data = {
-            title: document.querySelector('#title').value,
-            author: document.querySelector('#author').value,
-            content: document.querySelector('#content').value,
-            climbing_mountain: document.querySelector('#climbing_mountain').value,
-            climbing_date: document.querySelector('#climbing_date').value,
+            title: document.querySelector('#title').value || "",
+            author: document.querySelector('#author').value || "",
+            content: document.querySelector('#content').value || "",
+            climbing_mountain: document.querySelector('#climbing_mountain').value || "",
+            climbing_date: document.querySelector('#climbing_date').value || "",
         };
         // fetch API를 이용해서 POST 요청을 보내고 그 결과를 처리
         fetch('/api/v1/posts', {
@@ -55,10 +55,10 @@ const main = {
 
     update() {
         const data = {
-            title: document.querySelector("#title").value,
-            content: document.querySelector("#content").value,
-            climbing_mountain: document.querySelector('#climbing_mountain').value,
-            climbing_date: document.querySelector('#climbing_date').value,
+            title: document.querySelector("#title").value || "",
+            content: document.querySelector("#content").value || "",
+            climbing_mountain: document.querySelector('#climbing_mountain').value || "",
+            climbing_date: document.querySelector('#climbing_date').value || "",
         };
 
        const id = document.querySelector("#id").value;

@@ -17,42 +17,43 @@ const main = {
         if(btnDelete) btnDelete.addEventListener('click',()=>this.delete());
 
     },
+    login() {
+        console.log("login");
+        const data = {
+            userid: document.querySelector('#userid').value || "",
+            pw: document.querySelector('#pw').value || "",
+        };
+
+        fetch('/login-stay', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify(data),
+        })
+        .then((response) => {
+            if (response.status === 200 || response.status === 201) {
+                alert("로그인 성공.");
+                window.location.href = "/";
+            } else {
+                alert("로그인 실패.");
+            }
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
+    },
     // 데이터 저장
     save() {
 
         const data = {
-            title: document.querySelector('#title').value,
-            author: document.querySelector('#author').value,
-            content: document.querySelector('#content').value,
-            climbing_mountain: document.querySelector('#climbing_mountain').value,
+            title: document.querySelector('#title').value || "",
+            author: document.querySelector('#author').value || "",
+            content: document.querySelector('#content').value || "",
+            climbing_mountain: document.querySelector('#climbing_mountain').value || "",
             climbing_date: document.querySelector('#climbing_date').value,
         };
-        login() {
-            console.log("login");
-            const data = {
-                userid: document.querySelector('#userid').value,
-                pw: document.querySelector('#pw').value,
-            };
 
-            fetch('/login-stay', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8",
-                },
-                body: JSON.stringify(data),
-            })
-            .then((response) => {
-                if (response.status === 200 || response.status === 201) {
-                    alert("로그인 성공.");
-                    window.location.href = "/";
-                } else {
-                    alert("로그인 실패.");
-                }
-            })
-            .catch((error) => {
-                alert(error.message);
-            });
-        },
         // fetch API를 이용해서 POST 요청을 보내고 그 결과를 처리
         fetch('/api/v1/posts', {
             method: "POST",
@@ -79,14 +80,17 @@ const main = {
 
     update() {
         const data = {
-            title: document.querySelector("#title").value,
-            content: document.querySelector("#content").value,
-            climbing_mountain: document.querySelector('#climbing_mountain').value,
+            title: document.querySelector("#title").value || "",
+            content: document.querySelector("#content").value || "",
+            climbing_mountain: document.querySelector('#climbing_mountain').value || "",
             climbing_date: document.querySelector('#climbing_date').value,
         };
 
        const id = document.querySelector("#id").value;
-
+       if (data.climbing_date=null){
+            alert("등산 날짜를 입력해주세요.")
+       }
+       else {
        fetch(`/api/v1/posts/${id}`, {
             method: "PUT",
             headers: {
@@ -106,7 +110,7 @@ const main = {
        .catch((error) => {
                    // 네트워크 오류 등 예외 발생
                    alert(error.message)
-       });
+       })};
     },
     //데이터 삭제
     delete() {

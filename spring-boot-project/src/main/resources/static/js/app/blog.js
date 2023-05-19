@@ -22,10 +22,10 @@ const main = {
     // 데이터 저장
     save() {
         const data = {
-            title: document.querySelector('#title').value,
-            content: document.querySelector('#content').value,
-            pmntnsn: document.querySelector('#pmntnsn').value,
-            userid: document.querySelector('#userid').value,
+            title: document.querySelector('#title').value || "",
+            content: document.querySelector('#content').value || "",
+            pmntnsn: document.querySelector('#pmntnsn').value || "",
+            userid: document.querySelector('#userid').value || "",
         };
         // fetch API를 이용해서 POST 요청을 보내고 그 결과를 처리
         fetch('/api/v1/blog', {
@@ -53,10 +53,10 @@ const main = {
 
     update() {
         const data = {
-            title: document.querySelector("#title").value,
-            content: document.querySelector("#content").value,
-            userid: document.querySelector("#userid").value,
-            pmntnsn: document.querySelector("#pmntnsn").value,
+            title: document.querySelector("#title").value || "",
+            content: document.querySelector("#content").value || "",
+            userid: document.querySelector("#userid").value || "",
+            pmntnsn: document.querySelector("#pmntnsn").value || "",
         };
 
        const id = document.querySelector("#id").value;
